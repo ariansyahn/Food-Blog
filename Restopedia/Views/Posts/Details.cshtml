@@ -1,0 +1,80 @@
+﻿@model Restopedia.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    .banner-home {
+        height: auto;
+        padding-top: 187px;
+    }
+</style>
+<section class="banner-home"></section>
+<!-- blog-single Section Start -->
+<div id="blog-single">
+    <div class="gradient"></div>
+
+    <div class="container">
+        @Html.ActionLink("Back to Post List", "Index")
+        <div class="heading" data-aos="fade-up" data-aos-delay="300">
+            <h2 style="padding-bottom:11px;">Details of @Model.Title</h2>
+        </div>
+        <div>
+
+            @Html.ActionLink("Edit", "Edit", new { id = Model.PostId }, new { @class = "btn btn-primary" })
+            @*@Html.ActionLink("Delete", "Delete", new { id = Model.RestaurantId},
+                new { onclick = "return confirm('Are sure wants to delete?');" }) |*@
+            <a href="@Url.Action("Delete","Restaurants", new { id = Model.PostId })" onclick="return confirm('Apakah Anda yakin ingin menghapus ini?');" class="btn btn-danger">Delete</a>
+
+        </div>
+        <br />
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+
+            <dd>
+                @*@Html.DisplayFor(model => model.Text)*@
+                @Html.Raw(HttpUtility.HtmlDecode(Model.Text))
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+
+            <dd>
+                <img src="~/Content/images/posts/@Html.DisplayFor(model =>model.Image)" style="height:200px;width:300px;" />
+            </dd>
+            <dt>
+                Posted on :
+            </dt>
+            <dd>
+                @Model.Date.ToString("dd MMMM yyyy")
+            </dd>
+            <dt>
+                Posted By :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.Username)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+<!-- Blog_single Section End -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

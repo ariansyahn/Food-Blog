@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Restopedia.Models.Restaurant>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+<style>
+    .banner-home {
+        height: auto;
+        padding-top: 187px;
+    }
+</style>
+<section class="banner-home"></section>
+<!-- blog-single Section Start -->
+<div id="blog-single">
+    <div class="gradient"></div>
+
+    <div class="container">
+        <div class="heading" data-aos="fade-up" data-aos-delay="300">
+            <h2 style="padding-bottom:11px;">Restaurants</h2>
+        </div>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Country)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    @*<th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>*@
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>*@
+                    <th>Actions</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Country)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        @*<td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>*@
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Image)
+                        </td>*@
+                        <td>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.RestaurantId }) |*@
+                            @Html.ActionLink("Details", "Details", new { id = item.RestaurantId }, new { @class = "btn btn-info"}) @*|
+                            @Html.ActionLink("Delete", "Delete", new { id = item.RestaurantId })*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        
+    </div>
+</div>
+<!-- Blog_single Section End -->
+

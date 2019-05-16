@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Restopedia.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .banner-home {
+        height: auto;
+        padding-top: 187px;
+    }
+</style>
+<section class="banner-home"></section>
+
+<!-- blog-single Section Start -->
+<div id="blog-single">
+    <div class="gradient"></div>
+
+    <div class="container">
+        <div class="heading" data-aos="fade-up" data-aos-delay="300">
+            <h2 style="padding-bottom:11px;">Posts</h2>
+        </div>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Text)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.User.Username)
+                </th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    @*<td>
+                        @Html.Raw(item.Text.Substring(0, 200))
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Image)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Username)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.PostId }) |*@
+                        @Html.ActionLink("Details", "Details", new { id = item.PostId }, new { @class = "btn btn-info" })
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.PostId })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+</div>
+<!-- Blog_single Section End -->

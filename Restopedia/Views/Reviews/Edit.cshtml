@@ -1,0 +1,77 @@
+﻿@model Restopedia.Models.Review
+
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    .banner-home {
+        height: auto;
+        padding-top: 187px;
+    }
+    .shadow-textarea textarea.form-control::placeholder {
+        font-weight: 300;
+    }
+
+    .shadow-textarea textarea.form-control {
+        padding-left: 0.8rem;
+    }
+</style>
+<section class="banner-home"></section>
+<!-- blog-single Section Start -->
+<div id="blog-single">
+    <div class="gradient"></div>
+
+    <div class="container">
+        @Html.ActionLink("Back to Restaurant List", "List", "Restaurants")
+        <div class="heading" data-aos="fade-up" data-aos-delay="300">
+            <h2 style="padding-bottom:11px;">Edit Review</h2>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.RestaurantId)
+            @Html.HiddenFor(model => model.UserId)
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ReviewId)
+                @*@Html.HiddenFor(model => model.RestaurantId)*@
+                @*@Html.HiddenFor(model => model.UserId)*@
+                @Model.RestaurantId
+                @Model.UserId
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Body, new { @class = "form-control z-depth-1", @rows = "3", @id = "exampleFormControlTextarea6", @placeholder = "Write something here..." })
+                        @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                @*<input type="hidden" name="RestaurantId" value="@Model.RestaurantId" />*@
+                @*<input type="hidden" name="UserId" value="@Model.UserId" />*@
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Update" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<!-- Blog_single Section End -->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

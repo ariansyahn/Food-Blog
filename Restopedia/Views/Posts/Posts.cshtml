@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Restopedia.Models.Post>
+
+    <style>
+        .banner-home {
+            height: auto;
+            padding-top: 187px;
+        }
+    </style>
+
+
+
+    <section class="banner-home"></section>
+    <!-- blog-single Section Start -->
+    <div id="blog">
+        <div class="gradient"></div>
+        
+        <div class="container">
+            <div class="heading" data-aos="fade-up" data-aos-delay="300">
+                <h2>Read Food Posts</h2><br />
+                <h3>creative and awesome food posts</h3>
+            </div>
+            
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="300">
+                        <div class="row">
+                            <div class="col-lg-5 col-sm-12">
+                                <a href="@Url.Action("Single", "Posts", new { id = item.PostId })" class="d-block mb-5 h-100">
+                                    <img src="~/Content/images/posts/@Html.DisplayFor(modelItem => item.Image)" class="img-fluid img-thumbnail" style="height:207.5px;width:207.5px;" />
+                                </a>
+                            </div>
+                            <div class="col-lg-7 col-sm-12 inner-content">
+                                <h5><a href="@Url.Action("Single", "Posts", new { id = item.PostId })" >@Html.DisplayFor(modelItem => item.Title)</a></h5>
+                                <h6>
+                                    @*@item.Text.Substring(0,2)*@
+                                    @if (item.Text.Length < 250)
+                                    {
+                                        @Html.Raw(HttpUtility.HtmlDecode(item.Text).ToString().Substring(0, item.Text.Length))
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw(HttpUtility.HtmlDecode(item.Text).ToString().Substring(0, 250))
+                                        <br />
+                                        <a href="@Url.Action("Single", "Posts", new { id = item.PostId })" class="btn btn-info">Read More</a>
+                                    }
+                                </h6> 
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            <div class="row bt">
+                <div class="col-sm-12">
+                    <ul>
+                        <li data-aos="fade-right" data-aos-delay="100"><a class="active" href="#">1</a></li>
+                        <li data-aos="fade-right" data-aos-delay="300"><a href="#">2</a></li>
+                        <li data-aos="fade-right" data-aos-delay="500"><a href="#">3</a></li>
+                        <li data-aos="fade-right" data-aos-delay="700"><a href="#">4</a></li>
+                        <li data-aos="fade-right" data-aos-delay="900"><a href="#">5</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog_single Section End -->
+   

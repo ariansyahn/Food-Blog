@@ -1,0 +1,48 @@
+﻿@model Restopedia.Models.Post
+
+
+    <style>
+        .banner-home {
+            height: auto;
+            padding-top: 187px;
+        }
+    </style>
+
+    <section class="banner-home"></section>
+    <!-- blog-single Section Start -->
+    <div id="blog-single">
+
+        <div class="container">
+            <div class="heading">
+                <h2>@Html.DisplayFor(model => model.Title)</h2>
+            </div>
+            <div class="row" data-aos="fade-up" data-aos-duration="700">
+                <div class="col-sm-12 col-lg-12 box">
+                    <img src="~/Content/images/posts/@Html.DisplayFor(model =>model.Image)" alt="" class="img-thumbnail image" />
+
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.Text))
+
+                </div>
+            </div>
+            <div class="social-buttons" data-aos="fade-up" data-aos-duration="700">
+                <div class="row">
+                    <div class="col-sm-7 col-md-6">
+                        
+                    </div>
+                    <div class="col-sm-5 col-md-6">
+                        <div class="inner-text">
+                            <h3>
+                                Posted on @Model.Date.ToString("dd MMMM yyyy") by @Model.User.Username
+
+
+                                @*@Html.DisplayFor(model => model.Date)*@
+
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog_single Section End -->
+ 

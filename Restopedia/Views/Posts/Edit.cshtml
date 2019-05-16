@@ -1,0 +1,88 @@
+﻿@model Restopedia.Models.Post
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script src="~/Themes/ckeditor/ckeditor.js"></script>
+
+<style>
+    .banner-home {
+        height: auto;
+        padding-top: 187px;
+    }
+</style>
+<section class="banner-home"></section>
+
+<!-- blog-single Section Start -->
+<div id="blog-single">
+    <div class="gradient"></div>
+
+    <div class="container">
+        @Html.ActionLink("Back to Post List", "Index")
+        <div class="heading" data-aos="fade-up" data-aos-delay="300">
+            <h2 style="padding-bottom:11px;">Update Post</h2>
+        </div>
+
+        @using (Html.BeginForm("Edit", "Posts", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.PostId)
+            @Html.HiddenFor(model => model.UserId)
+            @Html.HiddenFor(model => model.Image)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Text, new { @id = "Ckeditor", @class = "form-control", @rows = "200" })
+                    @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                    <script>CKEDITOR.replace("Ckeditor");</script>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+
+                    <input type="file" class="form-control" name="image" value="" />
+                    <br />
+                    <img src="~/Content/images/posts/@Html.DisplayFor(model =>model.Image)" style="height:200px;width:300px;" />
+                    @*@Url.Content("~/images/posts/@model.Image");*@
+
+                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Update" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+</div>
+<!-- Blog_single Section End -->
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

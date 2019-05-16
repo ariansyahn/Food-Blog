@@ -1,0 +1,34 @@
+﻿@model Restopedia.Models.Restaurant
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .banner-home {
+        height: auto;
+        padding-top: 187px;
+    }
+</style>
+<section class="banner-home"></section>
+
+<!-- blog-single Section Start -->
+<div id="blog-single">
+    <div class="gradient"></div>
+
+    <div class="container">
+        @Html.ActionLink("Back to Restaurant List", "List", "Restaurants")
+        <div class="heading" data-aos="fade-up" data-aos-delay="300">
+            <h2 style="padding-bottom:11px;">Reviews for @Model.Name</h2>
+        </div>
+        @if (Convert.ToInt32(Session["RoleId"]) == 2)
+        {
+            <p>
+                @Html.ActionLink("Create New Review", "Create", new { restaurantId = Model.RestaurantId }, null)
+            </p>
+        }
+
+        @Html.Partial("_Reviews", Model.Reviews)
+
+    </div>
+</div>
+<!-- Blog_single Section End -->

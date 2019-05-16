@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="506ebbb5e78b4d3fb104c520777e80d0" Name="Diagram1">
+        <EntityTypeShape EntityType="RestopediaModel.Post" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestopediaModel.Restaurant" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestopediaModel.Review" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestopediaModel.Role" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestopediaModel.User" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="RestopediaModel.FK__Posts__UserId__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="RestopediaModel.FK__Reviews__Restaur__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="RestopediaModel.FK__Reviews__UserId__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="RestopediaModel.FK__Users__RoleId__1B0907CE" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RestopediaModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

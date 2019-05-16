@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Restopedia.Models.Review>
+<table class="table">
+    <tr>
+        <th>
+            Reviewer
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        @if (Session["RoleId"] != null)
+        {
+            <th>Action</th>
+        }
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+
+        @if (Convert.ToInt32(Session["RoleId"]) == 1)
+        {
+        <td>
+            <a href="@Url.Action("Delete","Reviews", new { id = item.ReviewId})" onclick="return confirm('Apakah Anda yakin ingin menghapus ini?');" class="btn btn-danger">Delete</a>
+        </td>
+            
+        }else if (Convert.ToInt32(Session["RoleId"]) == 2)
+	    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ReviewId }, new { @class = "btn btn-primary" })
+        </td>
+	    }
+    </tr>
+    }
+
+</table>

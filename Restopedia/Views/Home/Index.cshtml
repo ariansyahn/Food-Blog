@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Restopedia.Models.Post>
+@{
+	ViewBag.Title = "Home Page";
+}
+	<!-- Header section Ended-->
+	<section class="banner-home">
+		<!-- Banner section Start-->
+		<!-- container Start-->
+		<div class="container">
+			<!--Row Start-->
+			<div class="row">
+				<div class="col-sm-12">
+					<h1 data-aos="fade-left">welcome to Restopedia</h1><br>
+					<h2 data-aos="fade-left">The food blog for hungry</h2>
+					<!-- <h4 data-aos="fade-left" data-aos-delay="700">One of the finest food and restaurant theme on the net, cleaniest and simplistic <span>wordpress theme, browse it and experience it</span></h4> -->
+				</div>
+			</div>
+			<!--Row Ended-->
+		</div>
+		<!-- container Ended-->
+	</section>
+	<!-- Banner section Ended-->
+	<!-- Blog section Ended-->
+	<section class="blog">
+		<div class="gradient"></div>
+		<!-- Page Content -->
+		<div class="container">
+			<div class="heading" data-aos="fade-up" data-aos-delay="300">
+				<h2>Read Food Posts</h2><br />
+				<h3>creative and awesome food posts</h3>
+			</div>
+			<div class="row" data-aos="fade-up" data-aos-delay="500">
+				@foreach (var item in Model)
+				{
+					<div class="col-md-6 col-sm-12">
+						<div class="row">
+							<div class="col-lg-5 col-sm-12">
+								<a href="@Url.Action("Single", "Posts", new { id = item.PostId })" class="d-block mb-5 h-100">
+									@*<img class="img-fluid img-thumbnail" src="~/Content/images/blog-1.jpg" alt="blog-1">*@
+									<img src="~/Content/images/posts/@Html.DisplayFor(modelItem => item.Image)" class="img-fluid img-thumbnail" style="height:207.5px;width:207.5px;" />
+								</a>
+							</div>
+							<div class="col-lg-7 col-sm-12 inner-content">
+								<h5><a href="@Url.Action("Single", "Posts", new { id = item.PostId })" >@Html.DisplayFor(modelItem => item.Title)</a></h5>
+                                <h6>
+                                    @*@item.Text.Substring(0,2)*@
+                                    @if (item.Text.Length < 250)
+                                    {
+                                        @Html.Raw(HttpUtility.HtmlDecode(item.Text).ToString().Substring(0, item.Text.Length))
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw(HttpUtility.HtmlDecode(item.Text).ToString().Substring(0, 250))
+                                        <br />
+                                        <a href="@Url.Action("Single", "Posts", new { id = item.PostId })" class="btn btn-info">Read More</a>
+                                    }
+                                </h6>
+							</div>
+						</div>
+					</div>
+				}
+					
+				</div>
+		</div>
+		<!-- /.container -->
+	</section>
+	<!-- Blog section Ended-->
