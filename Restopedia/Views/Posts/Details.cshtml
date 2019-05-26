@@ -24,7 +24,7 @@
             @Html.ActionLink("Edit", "Edit", new { id = Model.PostId }, new { @class = "btn btn-primary" })
             @*@Html.ActionLink("Delete", "Delete", new { id = Model.RestaurantId},
                 new { onclick = "return confirm('Are sure wants to delete?');" }) |*@
-            <a href="@Url.Action("Delete","Restaurants", new { id = Model.PostId })" onclick="return confirm('Apakah Anda yakin ingin menghapus ini?');" class="btn btn-danger">Delete</a>
+            <a href="@Url.Action("Delete","Posts", new { id = Model.PostId })" onclick="return confirm('Apakah Anda yakin ingin menghapus ini?');" class="btn btn-danger">Delete</a>
 
         </div>
         <br />
