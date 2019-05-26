@@ -15,3 +15,13 @@
 2. `restore` the database on SQL Server
 3. `open` the projects on visual studio
 4. `run` the project
+
+Admin Account :
+
+    $ username : admin
+    $ password : admin1234
+
+Sample User Account :
+
+    $ username : ariansyahn
+    $ password : ariansyahn
