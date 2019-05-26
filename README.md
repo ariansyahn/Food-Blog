@@ -13,3 +13,5 @@
 
 1. `clone` the projects
 2. `restore` the database on SQL Server
+3. `open` the projects on visual studio
+4. `run` the project
