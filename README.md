@@ -18,10 +18,10 @@
 
 Admin Account :
 
-    $ username : admin
-    $ password : admin1234
+    username : admin
+    password : admin1234
 
 Sample User Account :
 
-    $ username : ariansyahn
-    $ password : ariansyahn
+    username : ariansyahn
+    password : ariansyahn
